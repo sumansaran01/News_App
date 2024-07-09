@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaBars } from "react-icons/fa6";
 import { MdDarkMode } from "react-icons/md";
+
 const Header = (props) => { 
   const [open, setopen] = useState(false);
   return (
