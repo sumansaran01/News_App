@@ -14,10 +14,14 @@ const News = (props) => {
 
   const updateNews = async () => {
     const url = `https://newsapi.org/v2/top-headlines?country=in&category=${props.category}&apiKey=d00863c04b9f46eca807b41150587ded&page=${page}&pageSize=${pageSize}`;
-    const response = await fetch(url);
-    const data = await response.json();
-    setArticles(data.articles);
-    setTotalResults(data.totalResults);
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        setArticles(data.articles || []);
+        setTotalResults(data.totalResults || 0);
+    } catch (error) {
+        console.error("Fetch error:", error);
+      }
   };
 
   const fetchMoreData = async () => {
@@ -58,13 +62,14 @@ const News = (props) => {
       />
 
       <InfiniteScroll
-        dataLength={articles.length}
+{/*         dataLength={articles.length} */}
+        dataLength={articles?.length || 0}
         next={fetchMoreData}
         hasMore={articles.length !== totalResults}
         loader={<h4>Loading...</h4>}
       >
         <div className="grid grid-cols-2 gap-3 lg:grid-cols-4 p-3">
-          {(searchResults.length === 0 ? articles : searchResults).map((article) => (
+          {((searchResults.length === 0 ? articles : searchResults) || []).map((article) => (
             <div className="border border-gray-300 relative hover:transform" key={article.url}>
               <div>
                 {article.urlToImage === null ? (
