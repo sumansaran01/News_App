@@ -17,8 +17,8 @@ const News = (props) => {
     try {
         const response = await fetch(url);
         const data = await response.json();
-        setArticles(data.articles || []);
-        setTotalResults(data.totalResults || 0);
+        setArticles(data.articles);
+        setTotalResults(data.totalResults);
     } catch (error) {
         console.error("Fetch error:", error);
       }
@@ -62,14 +62,13 @@ const News = (props) => {
       />
 
       <InfiniteScroll
-/*         dataLength={articles.length} */
-        dataLength={articles?.length || 0}
+        dataLength={articles.length}
         next={fetchMoreData}
         hasMore={articles.length !== totalResults}
         loader={<h4>Loading...</h4>}
       >
         <div className="grid grid-cols-2 gap-3 lg:grid-cols-4 p-3">
-          {((searchResults.length === 0 ? articles : searchResults) || []).map((article) => (
+          {(searchResults.length === 0 ? articles : searchResults).map((article) => (
             <div className="border border-gray-300 relative hover:transform" key={article.url}>
               <div>
                 {article.urlToImage === null ? (
