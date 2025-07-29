@@ -115,14 +115,6 @@ const App = () => {
               />
             }
           />
-
-          <Route
-            exact
-            path="/"
-            element={
-              <News mode={mode} setmode={setmode} handleMode={handleMode} />
-            }
-          />
         </Routes>
       </Router>
     </div>

@@ -1,0 +1,42 @@
+/* Custom styles for the news app */
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.newscategory {
+  transition: all 0.3s ease;
+}
+
+.newscategory:hover {
+  background-color: #f3f4f6;
+  transform: translateY(-2px);
+}
+
+/* Dark mode styles */
+.dark .newscategory:hover {
+  background-color: #374151;
+}
+
+/* Responsive grid adjustments */
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+}
+
+/* Loading animation */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
