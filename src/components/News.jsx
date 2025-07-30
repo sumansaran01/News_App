@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 // API Key from environment variables
-const API_KEY = import.meta.env.VITE_NEWS_API_KEY;
+const API_KEY = import.meta.env.VITE_NEWS_API_KEY || "774ebf8668b84c88a712900f590429c6" ;
 
 // Debug: Check if API key is loaded
 console.log("API Key loaded:", API_KEY ? "Yes" : "No");
